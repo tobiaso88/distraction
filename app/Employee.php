@@ -9,7 +9,7 @@ class Employee extends Model
 {
     public function clicks()
     {
-        return $this->hasMany('App\Click');
+        return $this->hasMany(Click::class);
     }
 
     public function getClicksTodayAttribute()
