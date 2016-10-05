@@ -1,5 +1,6 @@
 <?php
 
+use App\Employee;
 use Illuminate\Database\Seeder;
 
 class EmployeesSeeder extends Seeder
@@ -11,22 +12,20 @@ class EmployeesSeeder extends Seeder
      */
     public function run()
     {
-        $employees = array(
-            'Mikael Dalholm',
-            'Tobias Olsson',
-            'Björn Wiberg',
-            'Hanna Holmgren',
-            'Albert Engvie',
-            'Hanna Anderberg',
-            'Ida Wivel',
-            'Simon Dubois',
-            'Linnèa Abrahamsson',
-            'Mikael Nilsson'
-        );
+        $employees = [
+            ['name' => 'Mikael Dalholm'],
+            ['name' => 'Tobias Olsson'],
+            ['name' => 'Björn Wiberg'],
+            ['name' => 'Hanna Holmgren'],
+            ['name' => 'Albert Engvie'],
+            ['name' => 'Hanna Anderberg'],
+            ['name' => 'Ida Wivel'],
+            ['name' => 'Simon Dubois'],
+            ['name' => 'Linnèa Abrahamsson'],
+            ['name' => 'Mikael Nilsson']
+        ];
         foreach ($employees as $employee) {
-            DB::table('employees')->insert([
-                'name' => $employee
-            ]);
+            Employee::create($employee);
         }
     }
 }
