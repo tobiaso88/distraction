@@ -17,7 +17,7 @@ class CreateClicksTable extends Migration
             $table->increments('id');
             $table->integer('employee_id')->unsigned();
             $table->integer('count')->default(0);
-            $table->integer('date')->index();
+            $table->date('date')->index();
             $table->timestamps();
             $table->foreign('employee_id')
                   ->references('id')
