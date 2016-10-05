@@ -1,3 +1,0 @@
-[Tue Oct 04 16:20:43.149702 2016] [authz_core:error] [pid 92235] [client ::1:59839] AH01630: client denied by server configuration: /Users/Tobias/Sites/distraction/public_html
-[Tue Oct 04 22:59:36.751984 2016] [:error] [pid 92266] [client ::1:63315] PHP Fatal error:  Class 'Employee' not found in /Users/Tobias/Sites/distraction/routes/web.php on line 19, referer: http://distraction/
-[Wed Oct 05 09:03:20.067265 2016] [:error] [pid 98565] [client ::1:51856] PHP Fatal error:  Class 'App\\Carbon' not found in /Users/Tobias/Sites/distraction/app/Employee.php on line 17
