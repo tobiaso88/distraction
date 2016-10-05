@@ -22,6 +22,7 @@ Route::get('employees', function() {
 Route::post('employees/increase/{id}', function($id) {
     return App\Employee::findOrFail($id)
         ->clicks()
+        ->today()
         ->firstOrCreate(['date' => Carbon\Carbon::today()])
         ->increment('count');
 });
@@ -29,6 +30,7 @@ Route::post('employees/increase/{id}', function($id) {
 Route::post('employees/decrement/{id}', function($id) {
     App\Employee::find($id)
         ->clicks()
+        ->today()
         ->firstOrFail()
         ->decrement('count');
 });
