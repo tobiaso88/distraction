@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Auth;
 use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
@@ -13,13 +14,18 @@ class Employee extends Model
 
     public function getClicksTodayAttribute()
     {
-        $click = $this->clicks()->today()->first();
+        $click = $this->clicks()
+            ->where('user_id', Auth::id())
+            ->today()
+            ->first();
         return $click ? $click->count : 0;
     }
 
     public function getClicksTotalAttribute()
     {
-        return $this->clicks()->sum('count');
+        return $this->clicks()
+            ->where('user_id', Auth::id())
+            ->sum('count');
     }
 
     /**
