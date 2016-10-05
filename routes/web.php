@@ -11,27 +11,15 @@
 |
 */
 
-Route::get('/', 'DashboardController@index');
-
 Auth::routes();
 
-Route::get('employees', function() {
-    return App\Employee::all();
-});
+Route::group(array('middleware' => 'auth'), function() {
+    Route::get('/', 'DashboardController@index');
+    Route::get('/home', 'DashboardController@index');
 
-Route::post('employees/increase/{id}', function($id) {
-    return App\Employee::findOrFail($id)
-        ->clicks()
-        ->today()
-        ->firstOrCreate(['date' => Carbon\Carbon::today()])
-        ->increment('count');
+    Route::group(array('prefix' => 'employees'), function() {
+        Route::get('/', 'EmployeesController@all');
+        Route::post('increase/{id}', 'EmployeesController@increase');
+        Route::post('decrement/{id}', 'EmployeesController@decrement');
+    });
 });
-
-Route::post('employees/decrement/{id}', function($id) {
-    App\Employee::find($id)
-        ->clicks()
-        ->today()
-        ->firstOrFail()
-        ->decrement('count');
-});
-
