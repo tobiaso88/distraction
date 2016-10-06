@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Employee;
 use App\Http\Requests;
+use Auth;
 use Carbon\Carbon;
 
 class EmployeesController extends Controller
