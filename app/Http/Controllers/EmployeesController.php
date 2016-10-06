@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 use App\Employee;
 use App\Http\Requests;
-use Auth;
 use Carbon\Carbon;
 
 class EmployeesController extends Controller
@@ -20,7 +19,7 @@ class EmployeesController extends Controller
     {
         return Employee::findOrFail($id)
             ->clicks()
-            ->where('user_id', Auth::id())
+            ->user()
             ->today()
             ->firstOrCreate(['date' => Carbon::today(), 'user_id' => Auth::id()])
             ->increment('count');
@@ -30,7 +29,7 @@ class EmployeesController extends Controller
     {
         Employee::find($id)
             ->clicks()
-            ->where('user_id', Auth::id())
+            ->user()
             ->today()
             ->firstOrFail()
             ->decrement('count');

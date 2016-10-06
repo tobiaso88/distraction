@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Auth;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -26,5 +27,10 @@ class Click extends Model
     public function scopeToday(Builder $query)
     {
         return $query->where('date', Carbon::today());
+    }
+
+    public function scopeUser(Builder $query)
+    {
+        return $query->where('user_id', Auth::id());
     }
 }
